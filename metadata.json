@@ -1,0 +1,6 @@
+{
+  "name": "PAPA Engine - Creador de Herencias",
+  "description": "Herramienta oficial para crear y balancear Herencias (linajes y razas) del juego de rol PAPA Engine. Basado en el sistema de Puntos de Herencia (PH), balance a 0 PH y catálogo biológico de 125 rasgos.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

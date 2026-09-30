@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👑</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PAPA Engine - Creador de Herencias</title>
+    <meta name="description" content="Creador oficial de Herencias y Linajes para PAPA Engine con balance de 0 PH, validación de reglas biológicas y catálogo completo de rasgos." />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CDN with custom PAPA Engine Palette -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Outfit', 'sans-serif'],
+              display: ['Cinzel', 'serif'],
+            },
+            colors: {
+              papa: {
+                rose: '#C16C72',
+                'rose-hover': '#AF5B61',
+                'rose-dark': '#8E4046',
+                'rose-light': '#D6898E',
+                sand: '#E6CC80',
+                'sand-hover': '#D9BE6E',
+                'sand-dark': '#C2A34F',
+                'sand-light': '#F2DE9C',
+                charcoal: '#2B2C2E',
+                dark: '#1C1D1F',
+                surface: '#343538',
+                'surface-hover': '#3D3E42',
+                'surface-light': '#46484D',
+                gray: '#7C7F85',
+                'gray-light': '#9D9FA5',
+                'gray-dark': '#55575D',
+                magenta: '#DE3B74',
+                'magenta-hover': '#C72F64',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="/index.css">
+  </head>
+  <body class="bg-papa-dark text-gray-100 font-sans antialiased selection:bg-papa-sand selection:text-papa-dark min-h-screen">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

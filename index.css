@@ -1,0 +1,26 @@
+@layer base {
+  body {
+    background-color: #1C1D1F;
+    color: #F3F4F6;
+  }
+}
+
+/* Custom sleek scrollbar styled with the PAPA Engine palette */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2B2C2E;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #7C7F85;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #E6CC80;
+}
