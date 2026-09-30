@@ -13,6 +13,7 @@ interface HerenciaBuilderProps {
   onOpenImageExport: () => void;
   onOpenStorageManager: () => void;
   onQuickSave: () => void;
+  onGenerateRandomTraits?: () => void;
 }
 
 const HerenciaBuilder: React.FC<HerenciaBuilderProps> = ({
@@ -25,6 +26,7 @@ const HerenciaBuilder: React.FC<HerenciaBuilderProps> = ({
   onOpenImageExport,
   onOpenStorageManager,
   onQuickSave,
+  onGenerateRandomTraits,
 }) => {
   const [showChecklist, setShowChecklist] = useState(false);
   const [copiedNotification, setCopiedNotification] = useState(false);
@@ -227,11 +229,22 @@ const HerenciaBuilder: React.FC<HerenciaBuilderProps> = ({
           </div>
         </div>
 
-        {/* Quick presets helper */}
-        <div className="mb-4 bg-papa-surface/60 border border-papa-surface-light rounded-xl p-3 flex flex-wrap items-center justify-between gap-2">
-          <div className="flex items-center gap-1.5 text-xs text-papa-gray-light">
-            <span className="text-papa-sand font-bold">Cargar Ejemplo Oficial:</span>
+        {/* Quick presets and Randomizer helper */}
+        <div className="mb-4 bg-papa-surface/60 border border-papa-surface-light rounded-xl p-3 flex flex-wrap items-center justify-between gap-2.5">
+          <div className="flex flex-wrap items-center gap-2">
+            {onGenerateRandomTraits && (
+              <button
+                onClick={onGenerateRandomTraits}
+                className="px-3 py-1.5 rounded-lg bg-papa-sand text-papa-dark font-extrabold text-xs hover:bg-papa-sand-hover transition-all flex items-center gap-1.5 shadow-sm active:scale-95 group"
+                title="Generar al azar una combinación válida y equilibrada a 0 PH (sin modificar nombre ni descripción)"
+              >
+                <span className="text-sm group-hover:rotate-12 transition-transform">🎲</span>
+                <span>Armar al Azar (0 PH)</span>
+              </button>
+            )}
+            <span className="text-[11px] text-papa-gray font-semibold hidden sm:inline">Ejemplos:</span>
           </div>
+
           <div className="flex flex-wrap gap-1.5">
             {PRESET_HERENCIAS.map((preset, idx) => (
               <button
@@ -249,14 +262,23 @@ const HerenciaBuilder: React.FC<HerenciaBuilderProps> = ({
         {/* Selected Traits List */}
         <div className="space-y-2 mb-4 overflow-y-auto max-h-[36vh] pr-1.5">
           {selectedTraits.length === 0 ? (
-            <div className="text-center py-10 px-4 border border-dashed border-papa-gray/30 rounded-xl bg-papa-surface/30">
+            <div className="text-center py-8 px-4 border border-dashed border-papa-gray/30 rounded-xl bg-papa-surface/30">
               <svg className="w-10 h-10 mx-auto text-papa-gray/50 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               <p className="text-sm font-semibold text-gray-300">Aún no has añadido ningún rasgo</p>
-              <p className="text-xs text-papa-gray mt-1 max-w-sm mx-auto">
-                Selecciona ventajas y desventajas desde el catálogo izquierdo. Recuerda que debes elegir entre 2 y 9 rasgos y al menos una desventaja mecánica.
+              <p className="text-xs text-papa-gray mt-1 max-w-sm mx-auto mb-3">
+                Selecciona ventajas y desventajas desde el catálogo o genera una combinación equilibrada de inmediato.
               </p>
+              {onGenerateRandomTraits && (
+                <button
+                  onClick={onGenerateRandomTraits}
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-papa-sand text-papa-dark font-extrabold text-xs hover:bg-papa-sand-hover shadow-md active:scale-95 transition-all"
+                >
+                  <span>🎲</span>
+                  <span>Generar Rasgos al Azar (0 PH)</span>
+                </button>
+              )}
             </div>
           ) : (
             selectedTraits.map((trait) => {

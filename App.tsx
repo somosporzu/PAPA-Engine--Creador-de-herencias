@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { type Trait, type Herencia, type SavedHerencia, type RuleValidation } from './types';
 import { ALL_TRAITS, NATURALEZAS, PRESET_HERENCIAS } from './constants';
+import { generateBalancedRandomTraits } from './utils/randomTraits';
 import TraitLibrary from './components/TraitLibrary';
 import HerenciaBuilder from './components/HerenciaBuilder';
 import Header from './components/Header';
@@ -182,6 +183,12 @@ const App: React.FC = () => {
     setSelectedTraits(traits);
   }, []);
 
+  // Generate random balanced traits without modifying name, description or naturaleza
+  const handleGenerateRandomTraits = useCallback(() => {
+    const randomTraits = generateBalancedRandomTraits(ALL_TRAITS);
+    setSelectedTraits(randomTraits);
+  }, []);
+
   // Quick save current into saved herencias list
   const handleQuickSave = useCallback(() => {
     const name = herencia.name.trim() || 'Herencia Sin Nombre';
@@ -335,6 +342,7 @@ const App: React.FC = () => {
             onOpenImageExport={() => setIsImageModalOpen(true)}
             onOpenStorageManager={() => setIsStorageModalOpen(true)}
             onQuickSave={handleQuickSave}
+            onGenerateRandomTraits={handleGenerateRandomTraits}
           />
         </main>
 
